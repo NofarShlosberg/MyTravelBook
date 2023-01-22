@@ -13,17 +13,16 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.finalproject.R;
 import com.example.finalproject.viewmodel.AuthenticationViewModel;
 
-public class LoginFragment extends Fragment {
+public class RegisterFragment extends Fragment {
 
     private AuthenticationViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login,container,false);
+        View view = inflater.inflate(R.layout.fragment_register,container,false);
         return view;
     }
-
 
     // after view initiated
     @Override
