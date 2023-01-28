@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_MENU_home"
+        android:title="@string/home">
+    </item>
+
+    <item
+        android:id="@+id/main_MENU_mytravels"
+        android:title="@string/my_travels">
+    </item>
+
+    <item
+        android:id="@+id/main_MENU_addtravel"
+        android:title="@string/add_travel">
+    </item>
+
+    <item android:title="@string/account">
+        <menu>
+            <item
+                android:id="@+id/main_MENU_settings"
+                android:title="@string/settings">
+            </item>
+
+            <item
+                android:id="@+id/main_MENU_log_out"
+                android:title="@string/log_out">
+            </item>
+        </menu>
+    </item>
+
+</menu>
