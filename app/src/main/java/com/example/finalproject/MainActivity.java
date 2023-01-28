@@ -3,14 +3,18 @@ package com.example.finalproject;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,12 +35,38 @@ public class MainActivity extends BaseActivity {
         Toast.makeText(this,"Home",Toast.LENGTH_SHORT).show();
         navigationView = findViewById(R.id.nav_MAIN_view);
         drawer = findViewById(R.id.drawer);
-        navController = Navigation.findNavController(this,R.id.nav_MAIN_host);
+
+        NavHostFragment navHostFragment =
+                (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_MAIN_host);
+        navController = navHostFragment.getNavController();
+
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph())
                 .setDrawerLayout(drawer)
                 .build();
         NavigationUI.setupWithNavController(navigationView,navController);
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
 
+        toggle = new ActionBarDrawerToggle(this,drawer,R.string.close,R.string.open);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        return navController.navigateUp() || super.onSupportNavigateUp();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if (toggle.onOptionsItemSelected(item))
+        {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

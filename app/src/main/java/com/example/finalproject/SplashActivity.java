@@ -29,10 +29,11 @@ public class SplashActivity extends AppCompatActivity {
                 .alpha(1f)
                 .start();
 
+        // @TODO : Start at AuthActivity
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this , AuthActivity.class));
+                startActivity(new Intent(SplashActivity.this , MainActivity.class));
             }
         },2000);
 

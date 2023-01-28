@@ -11,16 +11,17 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_MAIN_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_nav_graph"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
     </androidx.fragment.app.FragmentContainerView>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_MAIN_view"
         android:layout_width="wrap_content"
         app:menu="@menu/main_menu"
+        android:layout_gravity="start"
         android:layout_height="match_parent"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
