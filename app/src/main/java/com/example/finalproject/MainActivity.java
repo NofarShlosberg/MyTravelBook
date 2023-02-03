@@ -43,10 +43,10 @@ public class MainActivity extends BaseActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph())
                 .setDrawerLayout(drawer)
                 .build();
-        NavigationUI.setupWithNavController(navigationView,navController);
+        NavigationUI.setupWithNavController(navigationView, navController);
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
 
-        toggle = new ActionBarDrawerToggle(this,drawer,R.string.close,R.string.open);
+        toggle = new ActionBarDrawerToggle(this, drawer, R.string.close, R.string.open);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 

@@ -6,13 +6,33 @@ public class User {
     private String email;
     private String image;
 
-    // all args constructor
+    private TravelDoc coronaCertificates;
+    private TravelDoc passport;
 
-    public User(String id, String name, String email, String image) {
+    // all args constructor
+    public User(String id, String name, String email, String image, TravelDoc coronaCertificates, TravelDoc passport) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.image = image;
+        this.coronaCertificates = coronaCertificates;
+        this.passport = passport;
+    }
+
+    public TravelDoc getCoronaCertificates() {
+        return coronaCertificates;
+    }
+
+    public void setCoronaCertificates(TravelDoc coronaCertificates) {
+        this.coronaCertificates = coronaCertificates;
+    }
+
+    public TravelDoc getPassport() {
+        return passport;
+    }
+
+    public void setPassport(TravelDoc passport) {
+        this.passport = passport;
     }
 
     // no args constructor (firebase)
