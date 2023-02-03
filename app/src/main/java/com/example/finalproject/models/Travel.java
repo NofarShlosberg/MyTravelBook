@@ -3,8 +3,7 @@ package com.example.finalproject.models;
 import java.util.ArrayList;
 
 // this class represents a travel
-public class Travel {
-    private String id;
+public class Travel extends FirebaseModel {
     private String destination;
 
     private long travelDate;
@@ -24,7 +23,7 @@ public class Travel {
     public Travel() { }
 
     public Travel(String id, String destination, long travelDate, long returnDate, ArrayList<Ticket> flightTickets, ArrayList<Residing> residing, CartRental carRental, Insurance insurance, String recommendations) {
-        this.id = id;
+        super(id);
         this.destination = destination;
         this.travelDate = travelDate;
         this.returnDate = returnDate;
@@ -33,14 +32,6 @@ public class Travel {
         this.carRental = carRental;
         this.insurance = insurance;
         this.recommendations = recommendations;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getDestination() {

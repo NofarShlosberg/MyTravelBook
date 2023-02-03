@@ -16,6 +16,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.finalproject.models.Travel;
+import com.example.finalproject.repositories.TravelRepository;
+import com.example.finalproject.utils.DatabaseCallback;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -49,7 +52,6 @@ public class MainActivity extends BaseActivity {
         toggle = new ActionBarDrawerToggle(this, drawer, R.string.close, R.string.open);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
     }
 
     @Override

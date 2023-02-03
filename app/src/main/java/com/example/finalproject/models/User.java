@@ -1,7 +1,6 @@
 package com.example.finalproject.models;
 
-public class User {
-    private String id;
+public class User extends FirebaseModel {
     private String name;
     private String email;
     private String image;
@@ -11,7 +10,7 @@ public class User {
 
     // all args constructor
     public User(String id, String name, String email, String image, TravelDoc coronaCertificates, TravelDoc passport) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.email = email;
         this.image = image;
@@ -38,13 +37,6 @@ public class User {
     // no args constructor (firebase)
     public User() {}
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

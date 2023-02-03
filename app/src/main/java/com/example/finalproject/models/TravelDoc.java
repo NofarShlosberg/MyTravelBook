@@ -1,15 +1,13 @@
 package com.example.finalproject.models;
 
-public abstract class TravelDoc {
-    private String id;
+public abstract class TravelDoc extends FirebaseModel {
     private String documentUrl;
 
     public TravelDoc() {
-
     }
 
     public TravelDoc(String id, String documentUrl) {
-        this.id = id;
+        super(id);
         this.documentUrl = documentUrl;
     }
 
@@ -17,13 +15,6 @@ public abstract class TravelDoc {
         return documentUrl;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public void setDocumentUrl(String documentUrl) {
         this.documentUrl = documentUrl;
