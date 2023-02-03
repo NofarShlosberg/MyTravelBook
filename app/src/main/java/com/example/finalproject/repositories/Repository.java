@@ -4,7 +4,6 @@ package com.example.finalproject.repositories;
 import com.example.finalproject.models.FirebaseModel;
 import com.example.finalproject.utils.DatabaseCallback;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 
 import java.util.List;
 import java.util.Map;

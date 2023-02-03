@@ -1,16 +1,12 @@
 package com.example.finalproject.repositories;
 
-import androidx.annotation.NonNull;
 
 import com.example.finalproject.models.Travel;
 import com.example.finalproject.models.User;
 import com.example.finalproject.utils.DatabaseCallback;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
 
@@ -35,14 +31,23 @@ public class TravelRepository extends Repository<Travel> {
 
             @Override
             public void consume(Travel value) {
+                String uid = FirebaseAuth.getInstance().getUid();
                 getCollectionRef().document(value.getId())
                         .collection("users")
                         .add(FirebaseAuth.getInstance().getUid())
-                        .addOnSuccessListener(documentReference -> callback.consume(value))
+                        .addOnSuccessListener(documentReference -> {
+                            UserRepository repository = new UserRepository();
+                            repository.getCollectionRef().document(uid)
+                                    .collection(TravelType.Created.getType())
+                                    .add(value.getId());
+                            callback.consume(value);
+                        })
                         .addOnFailureListener(callback::onDatabaseException);
             }
         });
     }
+
+
 
     public void getTravelUsers(String travelId, DatabaseCallback<List<User>> peopleCallback) {
         getCollectionRef().document(travelId)
@@ -62,7 +67,6 @@ public class TravelRepository extends Repository<Travel> {
                 })
                 .addOnFailureListener(peopleCallback::onDatabaseException);
     }
-
 
 
     @Override

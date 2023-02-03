@@ -1,9 +1,13 @@
 package com.example.finalproject.models;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 
 // this class represents a travel
 public class Travel extends FirebaseModel {
+
+    private String creatorId;
     private String destination;
 
     private long travelDate;
@@ -22,8 +26,9 @@ public class Travel extends FirebaseModel {
 
     public Travel() { }
 
-    public Travel(String id, String destination, long travelDate, long returnDate, ArrayList<Ticket> flightTickets, ArrayList<Residing> residing, CartRental carRental, Insurance insurance, String recommendations) {
+    public Travel(String id, String creatorId, String destination, long travelDate, long returnDate, ArrayList<Ticket> flightTickets, ArrayList<Residing> residing, CartRental carRental, Insurance insurance, String recommendations) {
         super(id);
+        this.creatorId = creatorId;
         this.destination = destination;
         this.travelDate = travelDate;
         this.returnDate = returnDate;
@@ -32,6 +37,27 @@ public class Travel extends FirebaseModel {
         this.carRental = carRental;
         this.insurance = insurance;
         this.recommendations = recommendations;
+    }
+
+    public Travel(String id, String destination, long travelDate, long returnDate, ArrayList<Ticket> flightTickets, ArrayList<Residing> residing, CartRental carRental, Insurance insurance, String recommendations) {
+        super(id);
+        this.creatorId = FirebaseAuth.getInstance().getUid();
+        this.destination = destination;
+        this.travelDate = travelDate;
+        this.returnDate = returnDate;
+        this.flightTickets = flightTickets;
+        this.residing = residing;
+        this.carRental = carRental;
+        this.insurance = insurance;
+        this.recommendations = recommendations;
+    }
+
+    public String getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
     }
 
     public String getDestination() {
