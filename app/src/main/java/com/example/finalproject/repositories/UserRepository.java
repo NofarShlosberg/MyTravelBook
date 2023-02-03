@@ -38,8 +38,10 @@ public class UserRepository extends Repository<User> {
                         callback.onDatabaseException(e);
                     }
                 });
-
     }
+
+
+
 
     @Override
     protected CollectionReference getCollectionRef() {
