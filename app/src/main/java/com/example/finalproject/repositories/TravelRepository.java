@@ -57,7 +57,7 @@ public class TravelRepository extends Repository<Travel> {
                     List<String> userIds = queryDocumentSnapshots.toObjects(String.class);
                     UserRepository userRepository = new UserRepository();
                     userRepository.getCollectionRef()
-                            .whereIn("id",userIds)
+                            .whereIn("id", userIds)
                             .get()
                             .addOnSuccessListener(usersSnapshot -> {
                                 List<User> users = usersSnapshot.toObjects(User.class);
