@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/travelsocial"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="42sp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:fontFamily="@font/gistesy"
+        android:translationY="22dp"
+        android:translationX="-48dp"
+        android:text="Welcome to your"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:fontFamily="sans-serif"
+        android:layout_marginEnd="32dp"
+        android:textSize="42sp"
+        android:textColor="@color/peach"
+        android:textStyle="bold"
+        android:text="Travel Book"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_AUTH_host"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/auth_nav_graph"
+        android:layout_height="match_parent">
+    </androidx.fragment.app.FragmentContainerView>
+
+
+</LinearLayout>
