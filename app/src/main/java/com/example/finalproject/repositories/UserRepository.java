@@ -8,10 +8,12 @@ import androidx.annotation.Nullable;
 import com.example.finalproject.models.Travel;
 import com.example.finalproject.models.User;
 import com.example.finalproject.utils.DatabaseCallback;
+import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
@@ -40,12 +42,59 @@ public class UserRepository extends Repository<User> {
                 .addOnFailureListener(callback::onDatabaseException);
     }
 
+    public void loginWithGoogle(FirebaseAuthUIAuthenticationResult result, DatabaseCallback<User> callback) {
+        // login with google successfull
+        if(result.getIdpResponse() != null && FirebaseAuth.getInstance().getUid() != null) {
+            FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
+            // check if the user has a record in the database
+            // if not create a record with the user's google provided details
+            isDocumentExists(fbUser.getUid(), new DatabaseCallback<User>() {
+                @Override
+                public void onDatabaseException(Exception e) {
+                    callback.onDatabaseException(e);
+                }
+
+                @Override
+                public void consume(User user) {
+                    // user record does not exist
+                    if(user == null) {
+                        insertDocument(new User(fbUser.getUid(), fbUser.getDisplayName(), fbUser.getEmail()), new DatabaseCallback<User>() {
+                            @Override
+                            public void onDatabaseException(Exception e) {
+                                callback.onDatabaseException(e);
+                            }
+
+                            @Override
+                            public void consume(User newCreatedUser) {
+                                callback.consume(newCreatedUser);
+                            }
+                        });
+                    } else { // user record exists -> consume
+                        callback.consume(user);
+                    }
+                }
+            }, User.class);
+        }
+    }
+
+    @Override
+    public void insertDocument(User anyObject, DatabaseCallback<User> callback) {
+        getCollectionRef().document(anyObject.getId())
+                .set(anyObject)
+                .addOnSuccessListener(documentReference -> {
+                    callback.consume(anyObject);
+                }).addOnFailureListener(callback::onDatabaseException);
+    }
+
     public void register(User user, String password, DatabaseCallback<User> callback) {
 
         // register a user to firebase-auth service
         FirebaseAuth.getInstance()
                 .createUserWithEmailAndPassword(user.getEmail(), password)
-                .addOnSuccessListener(authResult -> insertDocument(user, callback)).addOnFailureListener(new OnFailureListener() {
+                .addOnSuccessListener(authResult -> {
+                    user.setId(authResult.getUser().getUid());
+                    insertDocument(user, callback);
+                }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Ex. Invalid email address

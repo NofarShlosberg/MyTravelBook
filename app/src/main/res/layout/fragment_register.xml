@@ -1,7 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="32dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginVertical="8dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:hint="@string/enter_full_name"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_register"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginVertical="8dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:hint="@string/enter_email_address"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_baseline_mail_24"
+                android:inputType="textEmailAddress"
+                android:id="@+id/email_register"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginVertical="8dp"
+            app:passwordToggleEnabled="true"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:hint="@string/enter_password"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:id="@+id/password_register"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:background="@drawable/bground"
+            android:padding="8dp"
+            android:textAllCaps="false"
+            android:shadowRadius="@android:integer/status_bar_notification_info_maxnum"
+            android:textStyle="bold"
+            android:fontFamily="@font/zenmarulight"
+            android:textSize="24sp"
+            />
+
+        <Button
+            android:id="@+id/toLoginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textColor="@color/peach"
+            android:text="Already have an account? Signin now"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="42dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/zenmarulight"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

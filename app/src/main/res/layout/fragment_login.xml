@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_marginHorizontal="32dp"
+
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -45,20 +46,34 @@
 
 
         <Button
+            android:id="@+id/loginBtn"
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login"
+            android:background="@drawable/bground"
             android:padding="8dp"
             android:textAllCaps="false"
+            android:shadowRadius="@android:integer/status_bar_notification_info_maxnum"
             android:textStyle="bold"
             android:fontFamily="@font/zenmarulight"
             android:textSize="24sp"
             />
 
-
+        <ImageView
+            android:id="@+id/googleSignInBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/signinbutton"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="42dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/zenmarulight"
+            />
         <Button
-            android:layout_marginTop="16dp"
+            android:id="@+id/toRegisterBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -71,7 +86,7 @@
             android:textAllCaps="false"
             android:fontFamily="@font/zenmarulight"
             />
-    </LinearLayout>
 
+    </LinearLayout>
 
 </LinearLayout>

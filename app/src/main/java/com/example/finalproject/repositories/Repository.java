@@ -3,19 +3,28 @@ package com.example.finalproject.repositories;
 
 import com.example.finalproject.models.FirebaseModel;
 import com.example.finalproject.utils.DatabaseCallback;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.List;
 import java.util.Map;
 
 public abstract class Repository<T extends FirebaseModel> {
     public void insertDocument(T anyObject, DatabaseCallback<T> callback) {
-        getCollectionRef().add(anyObject).addOnSuccessListener(documentReference -> {
+        getCollectionRef().add(anyObject)
+                .addOnSuccessListener(documentReference -> {
             String id = documentReference.getId();
             documentReference.update("id", id);
             anyObject.setId(id);
             callback.consume(anyObject);
         }).addOnFailureListener(callback::onDatabaseException);
+    }
+
+    public void isDocumentExists(String id, DatabaseCallback<T> existsCallback, Class<T> classType) {
+        getCollectionRef().document(id).get()
+                .addOnSuccessListener(documentSnapshot -> existsCallback.consume(documentSnapshot.toObject(classType)))
+                .addOnFailureListener(existsCallback::onDatabaseException);
     }
 
     public void deleteDocument(String id, DatabaseCallback<Void> callback) {

@@ -17,13 +17,17 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.finalproject.models.Travel;
+import com.example.finalproject.models.User;
 import com.example.finalproject.repositories.TravelRepository;
 import com.example.finalproject.utils.DatabaseCallback;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 
 
 public class MainActivity extends BaseActivity {
 
+    public static final String USER_ARG = "user";
 
     private AppBarConfiguration appBarConfiguration;
     private NavigationView navigationView;
@@ -52,13 +56,19 @@ public class MainActivity extends BaseActivity {
         toggle = new ActionBarDrawerToggle(this, drawer, R.string.close, R.string.open);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        handleWelcome();
+    }
+
+    private void handleWelcome() {
+        User user = new Gson().fromJson(getIntent().getStringExtra(USER_ARG), User.class);
+        Snackbar.make(drawer,"Welcome, " + user.getName(),Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         return navController.navigateUp() || super.onSupportNavigateUp();
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -69,6 +79,5 @@ public class MainActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }
