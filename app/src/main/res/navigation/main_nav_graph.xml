@@ -10,4 +10,6 @@
         tools:layout="@layout/fragment_travels"
         android:name="com.example.finalproject.view.main.TravelsFragment"
         android:label="Travels" />
+
+
 </navigation>

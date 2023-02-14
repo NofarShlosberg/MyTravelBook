@@ -103,6 +103,10 @@ public class UserRepository extends Repository<User> {
                 });
     }
 
+    public void getUser(DatabaseCallback<User> callback) {
+        getOne(FirebaseAuth.getInstance().getUid(), User.class, callback);
+    }
+
     public void getTravels(DatabaseCallback<List<Travel>> travelsCallback, TravelType type) {
         String uid = FirebaseAuth.getInstance().getUid();
         getCollectionRef().document(uid)

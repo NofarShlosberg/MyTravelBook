@@ -1,14 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
+    android:background="@color/peach"
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:text="@string/travels"/>
+    <LinearLayout
+        android:id="@+id/topLayout_travels"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:minHeight="200dp"
+        android:gravity="center"
+        android:weightSum="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content">
 
-</LinearLayout>
+        <TextView
+            android:layout_weight="0.7"
+            android:id="@+id/helloTv_travels"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:fontFamily="@font/zenmarulight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello.."/>
+
+        <ImageView
+            android:layout_weight="0.3"
+            android:src="@drawable/profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/bg_top_round"
+        app:layout_constraintTop_toBottomOf="@id/topLayout_travels"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/createdTravelsCard_travels"
+            android:layout_width="match_parent"
+            android:layout_margin="32dp"
+            app:cardCornerRadius="16dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/light_peach"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:gravity="center"
+                android:minHeight="100dp"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                android:text="My Created Travels"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:rotation="-45"
+                    android:translationY="-24dp"
+                    android:layout_width="25dp"
+                    android:src="@drawable/ic_baseline_airplanemode_active_24"
+                    android:layout_height="25dp"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="32dp"
+            android:id="@+id/sharedTravelsCard_travels"
+            app:cardCornerRadius="16dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/light_peach"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:gravity="center"
+                android:minHeight="100dp"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="My Shared Travels"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:rotation="-45"
+                    android:translationY="-24dp"
+                    android:layout_width="25dp"
+                    android:src="@drawable/ic_baseline_airplanemode_active_24"
+                    android:layout_height="25dp"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/newTravelBtn_travels"
+            android:background="@drawable/bground"
+            android:text="New Travel"
+            android:textStyle="bold"
+            android:textSize="18sp"
+
+            android:drawableEnd="@drawable/ic_baseline_add_24"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:paddingHorizontal="48dp"
+            android:layout_margin="48dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
