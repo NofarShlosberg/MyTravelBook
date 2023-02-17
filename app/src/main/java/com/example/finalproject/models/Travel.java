@@ -13,20 +13,18 @@ public class Travel extends FirebaseModel {
     private long travelDate;
     private long returnDate;
 
-    private ArrayList<Ticket> flightTickets;
+    private Ticket flightTickets;
     private ArrayList<Residing> residing;
 
     // optional field
     private CartRental carRental;
 
     private Insurance insurance;
-
     private String recommendations;
-
 
     public Travel() { }
 
-    public Travel(String id, String creatorId, String destination, long travelDate, long returnDate, ArrayList<Ticket> flightTickets, ArrayList<Residing> residing, CartRental carRental, Insurance insurance, String recommendations) {
+    public Travel(String id, String creatorId, String destination, long travelDate, long returnDate, Ticket flightTickets, ArrayList<Residing> residing, CartRental carRental, Insurance insurance, String recommendations) {
         super(id);
         this.creatorId = creatorId;
         this.destination = destination;
@@ -39,7 +37,7 @@ public class Travel extends FirebaseModel {
         this.recommendations = recommendations;
     }
 
-    public Travel(String id, String destination, long travelDate, long returnDate, ArrayList<Ticket> flightTickets, ArrayList<Residing> residing, CartRental carRental, Insurance insurance, String recommendations) {
+    public Travel(String id, String destination, long travelDate, long returnDate, Ticket flightTickets, ArrayList<Residing> residing, CartRental carRental, Insurance insurance, String recommendations) {
         super(id);
         this.creatorId = FirebaseAuth.getInstance().getUid();
         this.destination = destination;
@@ -84,11 +82,11 @@ public class Travel extends FirebaseModel {
         this.returnDate = returnDate;
     }
 
-    public ArrayList<Ticket> getFlightTickets() {
+    public Ticket getFlightTickets() {
         return flightTickets;
     }
 
-    public void setFlightTickets(ArrayList<Ticket> flightTickets) {
+    public void setFlightTickets(Ticket flightTickets) {
         this.flightTickets = flightTickets;
     }
 
