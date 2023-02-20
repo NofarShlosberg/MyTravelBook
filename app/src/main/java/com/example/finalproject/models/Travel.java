@@ -2,8 +2,6 @@ package com.example.finalproject.models;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-
 // this class represents a travel
 public class Travel extends FirebaseModel {
 
@@ -14,17 +12,18 @@ public class Travel extends FirebaseModel {
     private long returnDate;
 
     private Ticket flightTickets;
-    private ArrayList<Residing> residing;
+    private Residing residing;
 
     // optional field
-    private CartRental carRental;
+    private CarRental carRental;
 
     private Insurance insurance;
     private String recommendations;
 
-    public Travel() { }
+    public Travel() {
+    }
 
-    public Travel(String id, String creatorId, String destination, long travelDate, long returnDate, Ticket flightTickets, ArrayList<Residing> residing, CartRental carRental, Insurance insurance, String recommendations) {
+    public Travel(String id, String creatorId, String destination, long travelDate, long returnDate, Ticket flightTickets, Residing residing, CarRental carRental, Insurance insurance, String recommendations) {
         super(id);
         this.creatorId = creatorId;
         this.destination = destination;
@@ -37,7 +36,7 @@ public class Travel extends FirebaseModel {
         this.recommendations = recommendations;
     }
 
-    public Travel(String id, String destination, long travelDate, long returnDate, Ticket flightTickets, ArrayList<Residing> residing, CartRental carRental, Insurance insurance, String recommendations) {
+    public Travel(String id, String destination, long travelDate, long returnDate, Ticket flightTickets, Residing residing, CarRental carRental, Insurance insurance, String recommendations) {
         super(id);
         this.creatorId = FirebaseAuth.getInstance().getUid();
         this.destination = destination;
@@ -90,19 +89,19 @@ public class Travel extends FirebaseModel {
         this.flightTickets = flightTickets;
     }
 
-    public ArrayList<Residing> getResiding() {
+    public Residing getResiding() {
         return residing;
     }
 
-    public void setResiding(ArrayList<Residing> residing) {
+    public void setResiding(Residing residing) {
         this.residing = residing;
     }
 
-    public CartRental getCarRental() {
+    public CarRental getCarRental() {
         return carRental;
     }
 
-    public void setCarRental(CartRental carRental) {
+    public void setCarRental(CarRental carRental) {
         this.carRental = carRental;
     }
 
@@ -122,3 +121,4 @@ public class Travel extends FirebaseModel {
         this.recommendations = recommendations;
     }
 }
+

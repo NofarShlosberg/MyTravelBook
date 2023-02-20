@@ -7,9 +7,15 @@
 
     <fragment
         android:id="@+id/main_MENU_mytravels"
-        tools:layout="@layout/fragment_travels"
         android:name="com.example.finalproject.view.main.TravelsFragment"
-        android:label="Travels" />
+        android:label="Travels"
+        tools:layout="@layout/fragment_travels" />
+
+    <fragment
+        android:id="@+id/main_MENU_addtravel"
+        android:name="com.example.finalproject.view.main.AddTravelFragment"
+        android:label="AddTravelFragment"
+        tools:layout="@layout/fragment_add_travel" />
 
 
 </navigation>

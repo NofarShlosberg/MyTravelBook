@@ -129,15 +129,15 @@ public class UserRepository extends Repository<User> {
     public void invite(User user, Travel travel, DatabaseCallback <DocumentReference> callback) {
         TravelRepository repository = new TravelRepository();
         repository.getCollectionRef()
-                        .document(travel.getId())
-                        .collection(TRAVEL_INVITES)
-                        .add(user.getId()).addOnSuccessListener(documentReference -> {
-                            getCollectionRef().document(user.getId())
-                                    .collection(TRAVEL_INVITES)
-                                    .add(travel.getId())
-                                    .addOnFailureListener(callback::onDatabaseException);
-                            callback.consume(documentReference);
-                        }).addOnFailureListener(callback::onDatabaseException);
+                .document(travel.getId())
+                .collection(TRAVEL_INVITES)
+                .add(user.getId()).addOnSuccessListener(documentReference -> {
+                    getCollectionRef().document(user.getId())
+                            .collection(TRAVEL_INVITES)
+                            .add(travel.getId())
+                            .addOnFailureListener(callback::onDatabaseException);
+                    callback.consume(documentReference);
+                }).addOnFailureListener(callback::onDatabaseException);
     }
 
     public ListenerRegistration listenForInvitations(DatabaseCallback<List<Travel>> travelsCallback) {

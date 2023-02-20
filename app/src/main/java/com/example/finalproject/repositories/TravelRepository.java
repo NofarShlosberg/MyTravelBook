@@ -6,9 +6,13 @@ import com.example.finalproject.models.User;
 import com.example.finalproject.utils.DatabaseCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class TravelRepository extends Repository<Travel> {
 
@@ -30,17 +34,21 @@ public class TravelRepository extends Repository<Travel> {
             }
 
             @Override
-            public void consume(Travel value) {
+            public void consume(Travel travel) {
                 String uid = FirebaseAuth.getInstance().getUid();
-                getCollectionRef().document(value.getId())
+                HashMap<String,Boolean> newTravelUser = new HashMap<>();
+                newTravelUser.put(uid,true);
+                getCollectionRef().document(travel.getId())
                         .collection("users")
-                        .add(FirebaseAuth.getInstance().getUid())
+                        .document(uid)
+                        .set(newTravelUser)
                         .addOnSuccessListener(documentReference -> {
                             UserRepository repository = new UserRepository();
                             repository.getCollectionRef().document(uid)
                                     .collection(TravelType.Created.getType())
-                                    .add(value.getId());
-                            callback.consume(value);
+                                    .document(travel.getId())
+                                    .set(travel);
+                            callback.consume(travel);
                         })
                         .addOnFailureListener(callback::onDatabaseException);
             }
@@ -54,7 +62,11 @@ public class TravelRepository extends Repository<Travel> {
                 .collection("users")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<String> userIds = queryDocumentSnapshots.toObjects(String.class);
+                    List<String> userIds = new ArrayList<>();
+                    queryDocumentSnapshots.getDocuments().forEach(documentSnapshot -> {
+                        userIds.add(documentSnapshot.getId());
+                    });
+
                     UserRepository userRepository = new UserRepository();
                     userRepository.getCollectionRef()
                             .whereIn("id", userIds)
@@ -74,4 +86,5 @@ public class TravelRepository extends Repository<Travel> {
         return FirebaseFirestore.getInstance()
                 .collection("travels");
     }
+
 }

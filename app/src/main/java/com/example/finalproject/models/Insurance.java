@@ -7,6 +7,8 @@ public class Insurance extends TravelDoc {
     public Insurance(String insuranceCompany) {
         this.insuranceCompany = insuranceCompany;
     }
+    public Insurance() {
+    }
 
     public Insurance(String id, String documentUrl, String insuranceCompany) {
         super(id, documentUrl);
@@ -21,3 +23,4 @@ public class Insurance extends TravelDoc {
         this.insuranceCompany = insuranceCompany;
     }
 }
+

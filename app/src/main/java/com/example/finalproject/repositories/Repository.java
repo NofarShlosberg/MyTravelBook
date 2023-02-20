@@ -14,11 +14,11 @@ public abstract class Repository<T extends FirebaseModel> {
     public void insertDocument(T anyObject, DatabaseCallback<T> callback) {
         getCollectionRef().add(anyObject)
                 .addOnSuccessListener(documentReference -> {
-            String id = documentReference.getId();
-            documentReference.update("id", id);
-            anyObject.setId(id);
-            callback.consume(anyObject);
-        }).addOnFailureListener(callback::onDatabaseException);
+                    String id = documentReference.getId();
+                    documentReference.update("id", id);
+                    anyObject.setId(id);
+                    callback.consume(anyObject);
+                }).addOnFailureListener(callback::onDatabaseException);
     }
 
     public void isDocumentExists(String id, DatabaseCallback<T> existsCallback, Class<T> classType) {

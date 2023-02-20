@@ -1,26 +1,24 @@
 package com.example.finalproject.models;
 
-import java.util.ArrayList;
-
 public class Residing extends TravelDoc {
     private double price;
     private long checkIn;
     private long checkOut;
     private String location;
     private boolean prepaid;
-    private ArrayList<String> images;
+    private String image;
 
     public Residing() {
     }
 
-    public Residing(String id, String documentUrl, double price, long checkIn, long checkOut, String location, boolean prepaid, ArrayList<String> images) {
+    public Residing(String id, String documentUrl, double price, long checkIn, long checkOut, String location, boolean prepaid, String image) {
         super(id, documentUrl);
         this.price = price;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.location = location;
         this.prepaid = prepaid;
-        this.images = images;
+        this.image = image;
     }
 
 
@@ -64,11 +62,11 @@ public class Residing extends TravelDoc {
         this.prepaid = prepaid;
     }
 
-    public ArrayList<String> getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
-    public void setImages(ArrayList<String> images) {
-        this.images = images;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

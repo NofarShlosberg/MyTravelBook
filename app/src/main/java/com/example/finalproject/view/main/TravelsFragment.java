@@ -26,3 +26,4 @@ public class TravelsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 }
+

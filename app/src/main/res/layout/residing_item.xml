@@ -21,7 +21,7 @@
             <ImageView
                 android:padding="8dp"
                 android:id="@+id/residing_iv"
-                android:src="@drawable/il"
+                android:src="@drawable/airplane_2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"/>
         <LinearLayout

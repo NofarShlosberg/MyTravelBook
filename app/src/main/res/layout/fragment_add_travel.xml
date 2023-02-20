@@ -61,6 +61,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_travel_dest"
                 android:layout_width="match_parent"
+                android:background="@color/fui_transparent"
                 android:layout_height="wrap_content"
                 android:hint="Enter destination name">
 
@@ -202,10 +203,11 @@
                 android:layout_marginHorizontal="8dp"
                 android:text="Add Residing places"
                 android:textAllCaps="false" />
-            <androidx.recyclerview.widget.RecyclerView
+            <TextView
                 android:layout_width="match_parent"
-                tools:listitem="@layout/residing_item"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:id="@+id/add_travel_travelResidingDetails"/>
         </LinearLayout>
 
         <LinearLayout

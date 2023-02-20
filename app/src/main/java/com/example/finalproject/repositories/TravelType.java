@@ -4,7 +4,7 @@ public enum TravelType {
     Created("createdTravels"),
     Connected("connectedTravels");
     private final String type;
-     TravelType(String type) {
+    TravelType(String type) {
         this.type = type;
     }
 
