@@ -23,8 +23,13 @@
                 android:padding="16dp"
                 android:text="@string/flight_tickets"
                 android:textAlignment="center"
-                android:textSize="22sp" />
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/peach"/>
                 <TextView
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:padding="5dp"
                     android:id="@+id/flight_tickets_showAirportStartPoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -33,11 +38,13 @@
 
                 </TextView>
 
-
                 <TextView
                     android:id="@+id/flight_tickets_showAirportDestination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:padding="5dp"
                     android:backgroundTint="@android:color/transparent"
                     android:text="Airport destination">
 
@@ -47,6 +54,9 @@
                 <TextView
                     android:id="@+id/flight_tickets_showFlightTimeInHours"
                     android:layout_width="match_parent"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:padding="5dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
                     android:text="Flight time in hours"
@@ -57,14 +67,18 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:padding="16dp"
-                android:text="@string/stop_points"
+                android:text="Stop Point "
+                android:textColor="@color/peach"
                 android:textAlignment="center"
-                android:textSize="22sp" />
+                android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/flight_tickets_stopPoint"
                     android:layout_width="match_parent"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
                     android:hint="@string/enter_stop_point"

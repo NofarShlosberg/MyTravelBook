@@ -49,8 +49,8 @@ public class ShowResidingDialog extends DialogFragment {
         TextView checkInTv = view.findViewById(R.id.residing_showCheckIn);
         TextView checkOutTv = view.findViewById(R.id.residing_showCheckOut);
 
-        locationNameTv.setText(residing.getLocation());
-        locationPriceTv.setText(String.valueOf(residing.getPrice()));
+        locationNameTv.setText("Location-"+residing.getLocation());
+        locationPriceTv.setText("Price-"+(residing.getPrice()));
         checkInTv.setText(SelectDateDialog.getDateString(residing.getCheckIn()));
         checkOutTv.setText(SelectDateDialog.getDateString(residing.getCheckOut()));
 

@@ -40,11 +40,11 @@ public class ShowCarRentalDialog extends DialogFragment {
         showDocumentBtn.setOnClickListener(v -> UIUtils.openDocumentByUrl(getContext(), carRental.getDocumentUrl()));
 
 
-            carModelTv.setText("Car Model -" + carRental.getCar());
-            carPriceTv.setText("Price -" + String.valueOf(carRental.getPrice()));
-            rentalCompanyTv.setText("Car Company -" + carRental.getRentalCompany());
-            pickupLocationTv.setText("PickUp -" + carRental.getPickupLocation());
-            returnLocationTv.setText("Return To -" + carRental.getReturnLocation());
+            carModelTv.setText("Model- " + carRental.getCar());
+            carPriceTv.setText("Price- " + String.valueOf(carRental.getPrice()));
+            rentalCompanyTv.setText("Company- " + carRental.getRentalCompany());
+            pickupLocationTv.setText("PickUp- " + carRental.getPickupLocation());
+            returnLocationTv.setText("Return To- " + carRental.getReturnLocation());
 
             return new AlertDialog.Builder(getContext())
                     .setView(view)

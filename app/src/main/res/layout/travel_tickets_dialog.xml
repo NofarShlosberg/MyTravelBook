@@ -23,7 +23,10 @@
                 android:padding="16dp"
                 android:text="@string/flight_tickets"
                 android:textAlignment="center"
-                android:textSize="22sp" />
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/peach"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -76,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
+                android:textStyle="bold"
                 android:text="@string/stop_points"
                 android:textAlignment="center"
                 android:textSize="22sp" />

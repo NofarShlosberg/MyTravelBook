@@ -22,8 +22,10 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:text="@string/car_rental"
+                android:textStyle="bold"
                 android:textAlignment="center"
-                android:textSize="22sp" />
+                android:textSize="24sp"
+                android:textColor="@color/peach"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -78,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:text="@string/location"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textSize="22sp" />
 

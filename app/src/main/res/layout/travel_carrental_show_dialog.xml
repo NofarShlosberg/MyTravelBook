@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
+                android:textStyle="bold"
                 android:text="@string/car_rental"
                 android:textAlignment="center"
                 android:textSize="30sp"
@@ -33,7 +34,9 @@
                     android:id="@+id/carRental_showCar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="22sp"
+                    android:padding="10dp"
+                    android:textStyle="bold"
                     android:backgroundTint="@android:color/transparent"
                     android:text="Car Model">
 
@@ -44,7 +47,9 @@
                     android:id="@+id/carRental_showRentalCompany"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
                     android:backgroundTint="@android:color/transparent"
                     android:text="Rental company">
 
@@ -54,7 +59,9 @@
                 <TextView
                     android:id="@+id/carRental_showPrice"
                     android:layout_width="match_parent"
-                    android:textSize="20sp"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
                     android:text="Car rental price"
@@ -67,17 +74,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
+                android:textStyle="bold"
                 android:text="@string/location"
                 android:textAlignment="center"
                 android:textColor="@color/peach"
-                android:textSize="22sp" />
+                android:textSize="24sp" />
 
 
                 <TextView
                     android:id="@+id/carRental_showPickUpLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:padding="5dp"
                     android:backgroundTint="@android:color/transparent"
                     android:text="Pick up location">
 
@@ -87,7 +97,9 @@
                     android:id="@+id/carRental_showreturnLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:padding="5dp"
                     android:backgroundTint="@android:color/transparent"
                     android:text="Return location">
 
@@ -96,7 +108,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_margin="20dp">
 
                 <ImageView
                     android:layout_width="25dp"
