@@ -4,6 +4,7 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -33,7 +34,6 @@ import com.example.finalproject.viewmodel.AppViewModel;
 import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment {
-
 
     ImageView profileIv;
     Button saveChanges;
@@ -78,6 +78,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
+    @SuppressLint("SuspiciousIndentation")
     private void saveChanges() {
         ProgressDialog dialog = new ProgressDialog(getContext());
         dialog.setTitle("Travel book");
@@ -107,7 +108,7 @@ public class ProfileFragment extends Fragment {
             profileIv = view.findViewById(R.id.profile_iv);
 
             profileIv.setOnClickListener(v -> {
-                openGallery();
+                showPassport();
             });
             saveChanges.setOnClickListener(vx -> {
                 saveChanges();
@@ -132,8 +133,9 @@ public class ProfileFragment extends Fragment {
 
     private void showPassport() {
         User user = ((MainActivity) getActivity()).getViewModel().getUserLiveData().getValue();
-        if(user != null) {
+        if(user != null && user.getPassport() != null) {
             UIUtils.openDocumentByUrl(getContext(), user.getPassport().getDocumentUrl());
         }
+
     }
 }

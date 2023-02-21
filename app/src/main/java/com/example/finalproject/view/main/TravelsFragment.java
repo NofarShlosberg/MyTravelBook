@@ -1,5 +1,6 @@
 package com.example.finalproject.view.main;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,7 @@ public class TravelsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_travels,container,false);
     }
 
+    @SuppressLint("SuspiciousIndentation")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

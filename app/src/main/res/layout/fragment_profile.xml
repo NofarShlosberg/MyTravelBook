@@ -20,10 +20,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginEnd="20dp">
 
         <TextView
             android:layout_weight="0.7"
@@ -36,6 +38,7 @@
             android:layout_height="wrap_content"
             android:text="Hello Rona!"/>
         <TextView
+            android:layout_below="@+id/helloTv_profile"
             android:layout_weight="0.7"
             android:id="@+id/helloTv_profileEmail"
             android:textColor="@color/white"
@@ -44,17 +47,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="rona@gmail.com"/>
-        </LinearLayout>
-
-        <ImageView
-            android:layout_weight="0.3"
-            android:id="@+id/profile_iv"
-            android:src="@drawable/profile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"/>
+        </RelativeLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="100dp">
+            <ImageView
+                android:layout_weight="0.3"
+                android:id="@+id/profile_iv"
+                android:src="@drawable/profile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:background="@drawable/bg_top_round"
         app:layout_constraintTop_toBottomOf="@id/topLayout_travels"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,12 +73,14 @@
         android:layout_height="0dp">
 
         <Button
+            android:layout_centerHorizontal="true"
             android:id="@+id/profile_addPassport"
             android:background="@drawable/bground"
             android:text="Add Passport"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="20dp"
             android:layout_gravity="center"
             android:drawableEnd="@drawable/ic_baseline_add_24"
             android:textAllCaps="false"
@@ -80,6 +89,8 @@
             android:layout_height="wrap_content"/>
 
         <Button
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/profile_addPassport"
             android:id="@+id/profile_currentPassport"
             android:background="@drawable/bground"
             android:text="Show current Passport"
@@ -100,6 +111,7 @@
             android:id="@+id/profile_saveChanges"
             android:layout_marginVertical="16dp"
             android:layout_marginHorizontal="32dp"
+             android:layout_alignParentBottom="true"
             android:text="Save Changes"/>
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

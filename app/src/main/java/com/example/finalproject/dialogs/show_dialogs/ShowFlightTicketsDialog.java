@@ -37,9 +37,10 @@ public class ShowFlightTicketsDialog extends DialogFragment {
         TextView flightHoursTv = view.findViewById(R.id.flight_tickets_showFlightTimeInHours);
         ListView stopPointsListView = view.findViewById(R.id.flight_tickets_showStopPointsLiveView);
         Button showDocumentBtn = view.findViewById(R.id.flight_tickets_showFlightDocument);
-        startPointTv.setText(tickets.getAirportSource());
-        destinationTv.setText(tickets.getDestinationAirport());
-        flightHoursTv.setText(String.valueOf(tickets.getFlightTimeInHours()));
+
+        startPointTv.setText("From -" +tickets.getAirportSource());
+        destinationTv.setText("To -"+ tickets.getDestinationAirport());
+        flightHoursTv.setText("Flight Time -" +String.valueOf(tickets.getFlightTimeInHours()));
         showDocumentBtn.setOnClickListener(v ->
                 UIUtils.openDocumentByUrl(getContext(), tickets.getDocumentUrl()));
 

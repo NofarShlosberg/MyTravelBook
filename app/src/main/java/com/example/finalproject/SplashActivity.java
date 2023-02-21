@@ -2,6 +2,8 @@ package com.example.finalproject;
 
 import static com.example.finalproject.MainActivity.USER_ARG;
 
+import android.animation.Animator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.finalproject.models.User;
 import com.example.finalproject.repositories.UserRepository;
 import com.example.finalproject.utils.DatabaseCallback;
@@ -21,15 +24,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
-
-
-    @Override
+    private ImageView logo ;
+        @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        ImageView logo = findViewById(R.id.logoApp);
-        logo.setAlpha(0f);
+            findViews();
+            logo.setAlpha(0f);
 
         logo.animate()
                 .setDuration(2000)
@@ -63,4 +64,9 @@ public class SplashActivity extends AppCompatActivity {
         },2000);
 
     }
+
+    private void findViews() {
+        logo = findViewById(R.id.logoApp);
+    }
+
 }

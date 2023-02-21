@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinalProject</string>
+    <string name="app_name">Travel Book</string>
     <string name="travels">Travels</string>
     <string name="add_travel">Add Travel</string>
     <string name="my_travels">My Travels</string>

@@ -24,17 +24,18 @@
             android:layout_weight="0.7"
             android:id="@+id/helloTv_travels"
             android:textColor="@color/white"
-            android:textSize="32sp"
+            android:textSize="25sp"
             android:fontFamily="@font/zenmarulight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add a new Travel"/>
+            android:text="Add a new Travel"
+            android:textStyle="bold"/>
 
         <ImageView
-            android:layout_weight="0.3"
+            android:layout_weight="0.2"
             android:src="@drawable/airplane_2"
-            android:layout_width="65dp"
-            android:layout_height="65dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
     </LinearLayout>
 
 
@@ -139,7 +140,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/add_travel_tickets"
@@ -147,6 +149,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:text="Add flight tickets"
+                android:backgroundTint="@color/light_peach"
+                android:gravity="center"
                 android:textAllCaps="false" />
             <TextView
                 android:layout_width="match_parent"
@@ -158,7 +162,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/add_travel_insurance"
@@ -166,7 +171,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:text="Add Insurance"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:backgroundTint="@color/light_peach"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -177,7 +183,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/add_travel_car"
@@ -185,6 +192,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:text="Add Car rental info"
+                android:backgroundTint="@color/light_peach"
                 android:textAllCaps="false" />
             <TextView
                 android:layout_width="match_parent"
@@ -195,13 +203,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
             <Button
                 android:id="@+id/add_travel_residing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:text="Add Residing places"
+                android:backgroundTint="@color/light_peach"
                 android:textAllCaps="false" />
             <TextView
                 android:layout_width="match_parent"
@@ -225,7 +235,7 @@
                 android:textSize="24sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="#673AB7"
+                android:backgroundTint="@color/peach"
                 android:text="Add Travel"
                 android:textAllCaps="false" />
             </androidx.cardview.widget.CardView>

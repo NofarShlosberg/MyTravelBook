@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,20 +58,44 @@ public class TravelDetailsFragment extends Fragment {
             destination.setText(travel.getDestination());
 
             flightTicketsCard.setOnClickListener(v -> {
-                ShowFlightTicketsDialog dialog = new ShowFlightTicketsDialog(travel.getFlightTickets());
-                dialog.show(getChildFragmentManager(),"flight");
+                if(travel.getFlightTickets() != null) {
+                    ShowFlightTicketsDialog dialog = new ShowFlightTicketsDialog(travel.getFlightTickets());
+                    dialog.show(getChildFragmentManager(), "flight");
+                }
+                else{
+                    Toast.makeText(requireContext(), "There is no Flight Ticket", Toast.LENGTH_SHORT).show();
+                }
+
             });
+
             insuranceCard.setOnClickListener(v -> {
-                ShowInsuranceDialog dialog = new ShowInsuranceDialog(travel.getInsurance());
-                dialog.show(getChildFragmentManager(),"insurance");
+                if(travel.getInsurance() != null) {
+                    ShowInsuranceDialog dialog = new ShowInsuranceDialog(travel.getInsurance());
+                    dialog.show(getChildFragmentManager(), "insurance");
+                }
+                else{
+                    Toast.makeText(requireContext(), "There is no Insurance", Toast.LENGTH_SHORT).show();
+                }
             });
+
             residingCard.setOnClickListener(v -> {
-                ShowResidingDialog dialog = new ShowResidingDialog(travel.getResiding());
-                dialog.show(getChildFragmentManager(),"residing");
+                if(travel.getResiding() != null) {
+                    ShowResidingDialog dialog = new ShowResidingDialog(travel.getResiding());
+                    dialog.show(getChildFragmentManager(), "residing");
+                }
+                else{
+                    Toast.makeText(requireContext(), "There is no Residing", Toast.LENGTH_SHORT).show();
+                }
             });
+
             carRentalCard.setOnClickListener(v -> {
-                ShowCarRentalDialog dialog = new ShowCarRentalDialog(travel.getCarRental());
-                dialog.show(getChildFragmentManager(),"carRental");
+                if(travel.getCarRental() != null) {
+                    ShowCarRentalDialog dialog = new ShowCarRentalDialog(travel.getCarRental());
+                    dialog.show(getChildFragmentManager(), "carRental");
+                }
+               else{
+                    Toast.makeText(requireContext(), "There is no Car Rental", Toast.LENGTH_SHORT).show();
+                }
             });
 
         }
