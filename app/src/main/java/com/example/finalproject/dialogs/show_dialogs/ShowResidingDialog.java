@@ -55,7 +55,7 @@ public class ShowResidingDialog extends DialogFragment {
         checkOutTv.setText(SelectDateDialog.getDateString(residing.getCheckOut()));
 
         Button showDocumentBtn = view.findViewById(R.id.residing_showResidingDocument);
-        showDocumentBtn.setOnClickListener(v -> UIUtils.openDocumentByUrl(this, residing.getDocumentUrl()));
+        showDocumentBtn.setOnClickListener(v -> UIUtils.openDocumentByUrl(getContext(), residing.getDocumentUrl()));
 
         return new AlertDialog.Builder(getContext())
                 .setView(view)

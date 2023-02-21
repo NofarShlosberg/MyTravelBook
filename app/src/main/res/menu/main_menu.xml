@@ -14,8 +14,8 @@
     <item android:title="@string/account">
         <menu>
             <item
-                android:id="@+id/main_MENU_settings"
-                android:title="@string/settings">
+                android:id="@+id/main_MENU_profile"
+                android:title="@string/profile">
             </item>
 
             <item

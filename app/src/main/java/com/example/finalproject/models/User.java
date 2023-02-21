@@ -5,16 +5,14 @@ public class User extends FirebaseModel {
     private String email;
     private String image;
 
-    private TravelDoc coronaCertificates;
     private TravelDoc passport;
 
     // all args constructor
-    public User(String id, String name, String email, String image, TravelDoc coronaCertificates, TravelDoc passport) {
+    public User(String id, String name, String email, String image, TravelDoc passport) {
         super(id);
         this.name = name;
         this.email = email;
         this.image = image;
-        this.coronaCertificates = coronaCertificates;
         this.passport = passport;
     }
     // convenience constructor - sign in with google
@@ -30,14 +28,6 @@ public class User extends FirebaseModel {
         this.email = email;
     }
 
-
-    public TravelDoc getCoronaCertificates() {
-        return coronaCertificates;
-    }
-
-    public void setCoronaCertificates(TravelDoc coronaCertificates) {
-        this.coronaCertificates = coronaCertificates;
-    }
 
     public TravelDoc getPassport() {
         return passport;

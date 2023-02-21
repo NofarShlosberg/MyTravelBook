@@ -43,4 +43,5 @@
     <string name="enter_residing_place_price">Enter residing place price</string>
     <string name="check_out">Check out</string>
     <string name="show_residing_document">Show Residing Document</string>
+    <string name="profile">Profile</string>
 </resources>

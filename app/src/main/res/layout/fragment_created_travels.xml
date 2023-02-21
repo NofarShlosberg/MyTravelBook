@@ -1,7 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:background="@color/peach"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/topLayout_travels"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:maxHeight="100dp"
+        android:gravity="center"
+        android:weightSum="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="0.7"
+            android:id="@+id/helloTv_travels"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:fontFamily="@font/zenmarulight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Created Travels"/>
+
+        <ImageView
+            android:layout_weight="0.3"
+            android:src="@drawable/airplane_2"
+            android:layout_width="65dp"
+            android:layout_height="65dp"/>
+    </LinearLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:id="@+id/nestedScrollView_addTravel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_top_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topLayout_travels"
+        android:layout_height="0dp">
+        <LinearLayout
+            android:padding="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rvTravelsCreated"
+                tools:listitem="@layout/travel_item"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

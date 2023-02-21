@@ -1,6 +1,6 @@
 package com.example.finalproject.models;
 
-public abstract class TravelDoc extends FirebaseModel {
+public class TravelDoc extends FirebaseModel {
     private String documentUrl;
 
     public TravelDoc() {

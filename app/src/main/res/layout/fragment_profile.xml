@@ -20,20 +20,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
         <TextView
             android:layout_weight="0.7"
-            android:id="@+id/helloTv_travels"
+            android:minWidth="200dp"
+            android:id="@+id/helloTv_profile"
             android:textColor="@color/white"
             android:textSize="32sp"
             android:fontFamily="@font/zenmarulight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello.."/>
+            android:text="Hello Rona!"/>
+        <TextView
+            android:layout_weight="0.7"
+            android:id="@+id/helloTv_profileEmail"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/zenmarulight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rona@gmail.com"/>
+        </LinearLayout>
 
         <ImageView
             android:layout_weight="0.3"
+            android:id="@+id/profile_iv"
             android:src="@drawable/profile"
-           android:id="@+id/travels_profileIv"
             android:layout_width="100dp"
             android:layout_height="100dp"/>
     </LinearLayout>
@@ -49,55 +65,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/createdTravelsCard_travels"
-            android:layout_width="match_parent"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="16dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/light_peach"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:gravity="center"
-                android:minHeight="100dp"
-                android:orientation="horizontal"
-                android:paddingStart="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <TextView
-                android:text="My Created Travels"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-                <ImageView
-                    android:rotation="-45"
-                    android:translationY="-24dp"
-                    android:layout_width="25dp"
-                    android:src="@drawable/ic_baseline_airplanemode_active_24"
-                    android:layout_height="25dp"/>
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_margin="16dp"
-            android:id="@+id/sharedTravelsCard_travels"
-            app:cardCornerRadius="16dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/light_peach"
-            android:layout_height="wrap_content">
-
-
-        </androidx.cardview.widget.CardView>
-
         <Button
-            android:id="@+id/newTravelBtn_travels"
+            android:id="@+id/profile_addPassport"
             android:background="@drawable/bground"
-            android:text="New Travel"
+            android:text="Add Passport"
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_marginTop="8dp"
@@ -107,5 +78,28 @@
             android:layout_width="wrap_content"
             android:paddingHorizontal="48dp"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/profile_currentPassport"
+            android:background="@drawable/bground"
+            android:text="Show current Passport"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:paddingHorizontal="48dp"
+            android:layout_height="wrap_content"/>
+
+
+         <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:id="@+id/profile_saveChanges"
+            android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="32dp"
+            android:text="Save Changes"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,26 @@ public class TravelRepository extends Repository<Travel> {
                     callback.consume(documentReference.getId());
                 }).addOnFailureListener(callback::onDatabaseException);
     }
+    public void addUsers(String travelId, List<String> userIds,
+                         DatabaseCallback<String> callback) {
+        int i;
+        for(i = 0; i < userIds.size(); i++) {
+            addUser(travelId, userIds.get(i), new DatabaseCallback<String>() {
+                @Override
+                public void onDatabaseException(Exception e) {
+                    callback.onDatabaseException(e);
+                }
+
+                @Override
+                public void consume(String value) {
+                    // ignore single value
+                }
+            });
+            if(i == userIds.size() - 1) {
+                callback.consume("");
+            }
+        }
+    }
 
     @Override
     public void insertDocument(Travel anyObject, DatabaseCallback<Travel> callback) {

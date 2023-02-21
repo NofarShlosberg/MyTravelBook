@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_margin="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+      <ImageView
+          android:id="@+id/travelerIv"
+          android:src="@drawable/profile"
+          android:layout_width="100dp"
+          android:padding="8dp"
+          android:layout_height="100dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="end"
+        android:layout_height="wrap_content">
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/travelerName"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Some name"/>
+
+
+    <CheckBox
+        android:id="@+id/travelerChecked"
+        android:layout_gravity="bottom|end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,7 +1,9 @@
 package com.example.finalproject;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,9 +26,11 @@ import com.example.finalproject.models.Travel;
 import com.example.finalproject.models.User;
 import com.example.finalproject.repositories.TravelRepository;
 import com.example.finalproject.utils.DatabaseCallback;
+import com.example.finalproject.view.auth.AuthActivity;
 import com.example.finalproject.viewmodel.AppViewModel;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 
 
@@ -40,13 +45,25 @@ public class MainActivity extends BaseActivity {
     private DrawerLayout drawer;
 
     private AppViewModel viewModel;
+
+    public AppViewModel getViewModel() {
+        return viewModel;
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewModel = new ViewModelProvider(this).get(AppViewModel.class);
+        FirebaseAuth.getInstance().addAuthStateListener(firebaseAuth -> {
+            if(firebaseAuth.getCurrentUser() == null) {
+                startActivity(new Intent(MainActivity.this, AuthActivity.class));
+                Toast.makeText(this,"Logged out successfully!",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
 
+        viewModel = new ViewModelProvider(this).get(AppViewModel.class);
 
         navigationView = findViewById(R.id.nav_MAIN_view);
         drawer = findViewById(R.id.drawer);
@@ -65,20 +82,16 @@ public class MainActivity extends BaseActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
         handleWelcome();
     }
 
     private void handleWelcome() {
-     viewModel.getUserLiveData().observe(this, new Observer<User>() {
-         @Override
-         public void onChanged(User user) {
-             Toast.makeText(MainActivity.this,"Hello " + user.getName(),Toast.LENGTH_SHORT).show();
-         }
-     });
         Intent previousScreenIntent = getIntent();
         String userAsJson = previousScreenIntent.getStringExtra(USER_ARG);
         User user = new Gson().fromJson(userAsJson, User.class);
         viewModel.setUser(user);
+
     }
 
     @Override

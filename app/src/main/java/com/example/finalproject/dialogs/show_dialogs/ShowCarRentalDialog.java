@@ -37,7 +37,7 @@ public class ShowCarRentalDialog extends DialogFragment {
 
         TextView showDocumentBtn = view.findViewById(R.id.carRental_showCarRentalDocument);
 
-        showDocumentBtn.setOnClickListener(v -> UIUtils.openDocumentByUrl(this, carRental.getDocumentUrl()));
+        showDocumentBtn.setOnClickListener(v -> UIUtils.openDocumentByUrl(getContext(), carRental.getDocumentUrl()));
 
         carModelTv.setText(carRental.getCar());
         carPriceTv.setText(String.valueOf(carRental.getPrice()));

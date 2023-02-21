@@ -9,13 +9,46 @@
         android:id="@+id/main_MENU_mytravels"
         android:name="com.example.finalproject.view.main.TravelsFragment"
         android:label="Travels"
-        tools:layout="@layout/fragment_travels" />
+        tools:layout="@layout/fragment_travels" >
+        <action
+            android:id="@+id/action_main_MENU_mytravels_to_main_MENU_addtravel"
+            app:destination="@id/main_MENU_addtravel" />
+        <action
+            android:id="@+id/action_main_MENU_mytravels_to_createdTravelsFragment"
+            app:destination="@id/createdTravelsFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/main_MENU_addtravel"
         android:name="com.example.finalproject.view.main.AddTravelFragment"
-        android:label="AddTravelFragment"
+        android:label="Add Travel"
         tools:layout="@layout/fragment_add_travel" />
+    <fragment
+        android:id="@+id/main_MENU_profile"
+        tools:layout="@layout/fragment_profile"
+        android:name="com.example.finalproject.view.main.ProfileFragment"
+        android:label="Profile" />
+
+
+    <fragment
+        tools:layout="@layout/fragment_created_travels"
+        android:id="@+id/createdTravelsFragment"
+        android:name="com.example.finalproject.view.main.CreatedTravelsFragment"
+        android:label="Created Travels" >
+        <action
+            android:id="@+id/action_createdTravelsFragment_to_travelDetailsFragment"
+            app:destination="@id/travelDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/travelDetailsFragment"
+        tools:layout="@layout/fragment_travel_details"
+        android:name="com.example.finalproject.view.main.TravelDetailsFragment"
+        android:label="Travel Details" />
+    <fragment
+        android:id="@+id/main_MENU_log_out"
+        android:name="com.example.finalproject.view.main.LogOutFragment"
+        android:label="LogOutFragment" />
 
 
 </navigation>

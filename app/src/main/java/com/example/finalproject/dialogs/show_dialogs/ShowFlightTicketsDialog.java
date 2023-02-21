@@ -40,7 +40,8 @@ public class ShowFlightTicketsDialog extends DialogFragment {
         startPointTv.setText(tickets.getAirportSource());
         destinationTv.setText(tickets.getDestinationAirport());
         flightHoursTv.setText(String.valueOf(tickets.getFlightTimeInHours()));
-        showDocumentBtn.setOnClickListener(v -> UIUtils.openDocumentByUrl(this, tickets.getDocumentUrl()));
+        showDocumentBtn.setOnClickListener(v ->
+                UIUtils.openDocumentByUrl(getContext(), tickets.getDocumentUrl()));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, tickets.getStopPoints());
         stopPointsListView.setAdapter(adapter);

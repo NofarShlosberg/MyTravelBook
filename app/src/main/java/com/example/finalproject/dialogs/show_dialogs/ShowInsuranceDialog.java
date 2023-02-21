@@ -32,7 +32,7 @@ public class ShowInsuranceDialog extends DialogFragment {
         TextView showDocumentBtn = view.findViewById(R.id.insurance_showInsuranceDocument);
 
         insuranceCompanyTv.setText(insurance.getInsuranceCompany());
-        showDocumentBtn.setOnClickListener(v -> UIUtils.openDocumentByUrl(this, insurance.getDocumentUrl()));
+        showDocumentBtn.setOnClickListener(v -> UIUtils.openDocumentByUrl(getContext(), insurance.getDocumentUrl()));
 
         return new AlertDialog.Builder(getContext())
                 .setView(view)
