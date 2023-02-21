@@ -122,31 +122,35 @@ public class UserRepository extends Repository<User> {
         getOne(FirebaseAuth.getInstance().getUid(), User.class, callback);
     }
 
-    public void getTravels(DatabaseCallback<List<Travel>> travelsCallback, TravelType type) {
+    public ListenerRegistration getTravels(DatabaseCallback<List<Travel>> travelsCallback, TravelType type) {
         String uid = FirebaseAuth.getInstance().getUid();
-        getCollectionRef().document(uid)
+        return getCollectionRef()
+                .document(uid)
                 .collection(type.getType())
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<String> travelIds = queryDocumentSnapshots.getDocuments().stream()
-                            .map(documentSnapshot ->
-                                    documentSnapshot.getReference().getId())
-                            .collect(Collectors.toList());
-
-                    if(travelIds.isEmpty()) {
-                        travelsCallback.consume(new ArrayList<>());
-                        return;
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException error) {
+                        if(queryDocumentSnapshots == null) return;
+                        List<String> travelIds = queryDocumentSnapshots
+                                .getDocuments()
+                                .stream()
+                                .map(documentSnapshot ->
+                                        documentSnapshot.getReference().getId())
+                                .collect(Collectors.toList());
+                        if(travelIds.isEmpty()) {
+                            travelsCallback.consume(new ArrayList<>());
+                            return;
+                        }
+                        TravelRepository repository = new TravelRepository();
+                        repository.getCollectionRef()
+                                .whereIn("id", travelIds)
+                                .get()
+                                .addOnSuccessListener(travelSnapshots -> {
+                                    List<Travel> travels = travelSnapshots.toObjects(Travel.class);
+                                    travelsCallback.consume(travels);
+                                }).addOnFailureListener(travelsCallback::onDatabaseException);
                     }
-                    TravelRepository repository = new TravelRepository();
-                    repository.getCollectionRef()
-                            .whereIn("id", travelIds)
-                            .get()
-                            .addOnSuccessListener(travelSnapshots -> {
-                                List<Travel> travels = travelSnapshots.toObjects(Travel.class);
-                                travelsCallback.consume(travels);
-                            }).addOnFailureListener(travelsCallback::onDatabaseException);
-                })
-                .addOnFailureListener(travelsCallback::onDatabaseException);
+                });
     }
 
     public void invite(User user, Travel travel, DatabaseCallback <Void> callback) {

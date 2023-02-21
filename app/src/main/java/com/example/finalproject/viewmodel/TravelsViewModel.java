@@ -11,6 +11,7 @@ import com.example.finalproject.repositories.TravelRepository;
 import com.example.finalproject.repositories.TravelType;
 import com.example.finalproject.repositories.UserRepository;
 import com.example.finalproject.utils.DatabaseCallback;
+import com.google.firebase.firestore.ListenerRegistration;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class TravelsViewModel extends ViewModel {
     private final MutableLiveData<List<Travel>> sharedTravelsLive = new MutableLiveData<>();
     // observer for an exception
     private final MutableLiveData<Exception> exceptionMableLiveData = new MutableLiveData<>();
-
+    private ListenerRegistration travelsListener;
 
     public TravelsViewModel() {
 
@@ -38,11 +39,11 @@ public class TravelsViewModel extends ViewModel {
             public void consume(List<Travel> createdTravels) {
                 System.out.println("Created travels");
                 System.out.println(createdTravels.size());
-                createdTravelsLive.postValue(createdTravels);
+                sharedTravelsLive.postValue(createdTravels);
             }
-        }, TravelType.Created);
+        }, TravelType.Connected);
 
-        userRepository.getTravels(new DatabaseCallback<List<Travel>>() {
+        travelsListener = userRepository.getTravels(new DatabaseCallback<List<Travel>>() {
             @Override
             public void onDatabaseException(Exception e) {
                 exceptionMableLiveData.postValue(e);
@@ -50,12 +51,17 @@ public class TravelsViewModel extends ViewModel {
 
             @Override
             public void consume(List<Travel> sharedTravels) {
-                sharedTravelsLive.postValue(sharedTravels);
+                createdTravelsLive.postValue(sharedTravels);
             }
-        }, TravelType.Connected);
+        }, TravelType.Created);
     }
 
-
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        if (travelsListener != null)
+            travelsListener.remove();
+    }
 
     public MutableLiveData<Exception> getExceptionMableLiveData() {
         return exceptionMableLiveData;

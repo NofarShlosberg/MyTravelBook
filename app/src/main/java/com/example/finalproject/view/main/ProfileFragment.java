@@ -108,7 +108,7 @@ public class ProfileFragment extends Fragment {
             profileIv = view.findViewById(R.id.profile_iv);
 
             profileIv.setOnClickListener(v -> {
-                showPassport();
+                openGallery();
             });
             saveChanges.setOnClickListener(vx -> {
                 saveChanges();

@@ -1,5 +1,6 @@
 package com.example.finalproject.view.auth;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,13 +24,14 @@ import com.example.finalproject.viewmodel.AuthenticationViewModel;
 public class RegisterFragment extends Fragment {
 
     private AuthenticationViewModel viewModel;
-
+    ProgressDialog dialog;
     private Button registerBtn, toLoginBtn;
-    private TextView emailRegister,passwordRegister,nameRegister;
+    private TextView emailRegister, passwordRegister, nameRegister;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_register,container,false);
+        return inflater.inflate(R.layout.fragment_register, container, false);
     }
 
     // after view initiated
@@ -46,42 +48,49 @@ public class RegisterFragment extends Fragment {
         // login-result observer
         viewModel.getUserMutableLiveData().observe(getViewLifecycleOwner(), user -> {
             AuthActivity activity = (AuthActivity) getActivity();
-            if(activity==null) return;
+            if (dialog != null)
+                dialog.dismiss();
+            if (activity == null) return;
             activity.postAuth(user);
         });
 
         viewModel.getExceptionMableLiveData().observe(getViewLifecycleOwner(), exception -> {
             AuthActivity activity = (AuthActivity) getActivity();
-            if(activity==null) return;
-            activity.showSnackBar(view,exception.getMessage());
+            if (dialog != null)
+                dialog.dismiss();
+            if (activity == null) return;
+            activity.showSnackBar(view, exception.getMessage());
         });
 
         // return to login screen
         toLoginBtn.setOnClickListener(v -> NavHostFragment.findNavController(this).popBackStack());
         // register action
         registerBtn.setOnClickListener(v -> {
-            // @TODO : ProgressDialog
-
+            if (dialog == null) {
+                dialog = new ProgressDialog(getContext());
+                dialog.setTitle("Travel Book");
+            }
+            dialog.show();
             AuthActivity activity = (AuthActivity) getActivity();
             String name = nameRegister.getText().toString();
-           if(name.isEmpty()) {
-               activity.showSnackBar(view, "Please fill your name at the name field");
-               nameRegister.requestFocus();
-               return;
-           }
-            if(emailRegister.getText().toString().isEmpty()) {
+            if (name.isEmpty()) {
+                activity.showSnackBar(view, "Please fill your name at the name field");
+                nameRegister.requestFocus();
+                return;
+            }
+            if (emailRegister.getText().toString().isEmpty()) {
                 activity.showSnackBar(view, "Please fill your email at the email field");
                 emailRegister.requestFocus();
                 return;
             }
-            if(passwordRegister.getText().toString().isEmpty()) {
+            if (passwordRegister.getText().toString().isEmpty()) {
                 activity.showSnackBar(view, "Please fill your password at the password field");
                 passwordRegister.requestFocus();
                 return;
             }
 
-           viewModel.register(new User(name,
-                   emailRegister.getText().toString()), passwordRegister.getText().toString());
+            viewModel.register(new User(name,
+                    emailRegister.getText().toString()), passwordRegister.getText().toString());
         });
     }
 
